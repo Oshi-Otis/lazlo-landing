@@ -1,0 +1,21 @@
+{
+  "name": "lazlo-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lazlo public marketing site (oshigroup.co.uk) — standalone static export",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "gen:og": "node scripts/gen-og.mjs"
+  },
+  "dependencies": {
+    "next": "^15.5.19",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "sharp": "0.34.2"
+  }
+}

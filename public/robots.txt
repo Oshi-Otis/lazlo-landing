@@ -1,0 +1,9 @@
+# Lazlo — oshigroup.co.uk
+# NOTE: the site currently ships with a noindex meta tag (see app/layout.jsx) to
+# HOLD PUBLISH until pricing is confirmed and the domain is live. That meta tag,
+# not this file, is what keeps the site out of search results for now.
+# At go-live: flip robots.index to true in app/layout.jsx — this file already allows crawling.
+User-agent: *
+Allow: /
+
+Sitemap: https://oshigroup.co.uk/sitemap.xml
