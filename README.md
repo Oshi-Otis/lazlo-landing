@@ -35,23 +35,17 @@ npm run gen:og         # regenerate public/og.png (only if the OG art changes)
 
 ## Deploy (GitHub Pages)
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds with
-`NEXT_PUBLIC_BASE_PATH=/lazlo-landing` and deploys to GitHub Pages.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds a static
+export and deploys to GitHub Pages.
 
-Preview URL: **https://oshi-otis.github.io/lazlo-landing/**
+- **Custom domain:** `oshigroup.co.uk` (pinned by `public/CNAME`). Build uses an
+  empty base path so assets resolve at the domain root.
+- Until the apex DNS is repointed (below), `https://oshi-otis.github.io/lazlo-landing/`
+  301-redirects to the custom domain.
 
-## Going live on oshigroup.co.uk
+### DNS records (user action — set at your registrar, GoDaddy)
 
-1. Add a file `public/CNAME` containing `oshigroup.co.uk`.
-2. In `.github/workflows/deploy.yml`, set `NEXT_PUBLIC_BASE_PATH: ""` and
-   `NEXT_PUBLIC_SITE_URL: https://oshigroup.co.uk`.
-3. In `app/layout.jsx`, flip `robots` to `{ index: true, follow: true }` (this is
-   the only thing currently holding the site out of search — "hold publish").
-4. Confirm the pricing tiers in `components/sections2.jsx` are final.
-5. Set the DNS records below at the domain registrar, then set the custom domain
-   under **Settings → Pages** in the repo.
-
-### DNS records (user action — set at your registrar)
+Replace the existing parking A records on the apex; do **not** touch MX/TXT (email).
 
 Apex `oshigroup.co.uk` → GitHub Pages (four A records, and AAAA for IPv6):
 

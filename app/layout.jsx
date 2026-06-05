@@ -17,9 +17,8 @@ export const metadata = {
   },
   description: DESCRIPTION,
   applicationName: 'Lazlo',
-  // HOLDING PUBLISH: noindex until pricing is confirmed and the domain is live.
-  // Flip to { index: true, follow: true } at go-live.
-  robots: { index: false, follow: false },
+  // LIVE: pricing confirmed, custom domain (oshigroup.co.uk) — indexable.
+  robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
     siteName: 'Lazlo',

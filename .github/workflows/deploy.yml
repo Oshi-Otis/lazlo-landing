@@ -28,12 +28,10 @@ jobs:
       - name: Build static export
         run: npm run build
         env:
-          # PROJECT-SITE preview build (served at /lazlo-landing/).
-          # When the custom domain (oshigroup.co.uk) goes live, add a public/CNAME
-          # file and set NEXT_PUBLIC_BASE_PATH to "" + NEXT_PUBLIC_SITE_URL to the
-          # apex domain, then flip robots.index to true in app/layout.jsx.
-          NEXT_PUBLIC_BASE_PATH: /lazlo-landing
-          NEXT_PUBLIC_SITE_URL: https://oshi-otis.github.io/lazlo-landing
+          # LIVE on the custom apex domain (oshigroup.co.uk) — served at root, so
+          # the base path is empty. public/CNAME pins the Pages custom domain.
+          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_SITE_URL: https://oshigroup.co.uk
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
