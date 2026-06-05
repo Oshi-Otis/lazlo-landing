@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Lockup } from './brand';
 
+// The Lazlo app login lives on the app subdomain (separate Fly-hosted Next.js app).
+const LOGIN_URL = 'https://app.oshigroup.co.uk/login';
+
 // Shared across all pages. Nav points at home-page sections ("/#…") so it works
 // from /support, /privacy, /terms too; "Support" + the trial CTA point at the
 // standalone /support page (a real URL Amazon / Meta reviewers can validate).
@@ -41,6 +44,7 @@ export default function Header() {
         </nav>
 
         <div className="nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <a className="btn btn-ghost" href={LOGIN_URL}>Log in</a>
           <Link className="btn btn-elec" href="/support">Start your 1-month free trial</Link>
         </div>
 
@@ -58,7 +62,8 @@ export default function Header() {
           {NAV.map(([label, href]) => (
             <Link key={href} href={href} onClick={() => setOpen(false)} style={{ display: 'block', padding: '13px 4px', fontSize: 16, fontWeight: 500, borderBottom: '1px solid var(--rule-soft)' }}>{label}</Link>
           ))}
-          <Link className="btn btn-elec btn-block btn-lg" href="/support" onClick={() => setOpen(false)} style={{ marginTop: 14 }}>Start your 1-month free trial</Link>
+          <a className="btn btn-ghost btn-block btn-lg" href={LOGIN_URL} onClick={() => setOpen(false)} style={{ marginTop: 14 }}>Log in</a>
+          <Link className="btn btn-elec btn-block btn-lg" href="/support" onClick={() => setOpen(false)} style={{ marginTop: 10 }}>Start your 1-month free trial</Link>
         </div>
       )}
     </header>
