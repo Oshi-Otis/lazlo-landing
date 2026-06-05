@@ -11,7 +11,7 @@ import { P, Eyebrow, Icons } from './brand';
 //   2. Paste its endpoint below, e.g. 'https://formspree.io/f/abcdwxyz'
 // While FORMSPREE_ENDPOINT is empty, the form falls back to opening the visitor's
 // mail client (mailto:). Once set, submissions are sent automatically (AJAX).
-const FORMSPREE_ENDPOINT = ''; // e.g. 'https://formspree.io/f/abcdwxyz'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqznzjn';
 
 export default function Support() {
   const [sent, setSent] = useState(false);
