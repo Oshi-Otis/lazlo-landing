@@ -5,3 +5,6 @@
 *.log
 npm-debug.log*
 .env*.local
+
+# local preview config (leaks local paths)
+.claude/
