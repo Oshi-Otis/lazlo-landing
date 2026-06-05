@@ -53,8 +53,7 @@ export default function Footer() {
             <div style={{ color: 'var(--bone-70)' }}>Get in touch</div>
             support@oshigroup.co.uk<br />
             courtney@oshigroup.co.uk<br />
-            Partner / API: api@oshigroup.co.uk<br />
-            +44 7714 236456
+            Partner / API: api@oshigroup.co.uk
           </div>
           <div className="mono" style={{ fontSize: 12, lineHeight: 1.85, color: 'var(--bone-55)' }}>
             <div style={{ color: 'var(--bone-70)' }}>Legal</div>

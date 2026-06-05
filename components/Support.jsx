@@ -5,39 +5,50 @@ import Link from 'next/link';
 import { P, Eyebrow, Icons } from './brand';
 
 // Support / Contact section. Doubles as the free-trial lead capture.
-// No backend: the form composes a mailto: to support@oshigroup.co.uk so it works
-// on a pure static host. To switch to a hosted form, set FORMSPREE_ENDPOINT below
-// and POST to it instead of building the mailto (everything else stays the same).
-const FORMSPREE_ENDPOINT = ''; // e.g. 'https://formspree.io/f/xxxxxxxx'
+//
+// Hosted form via Formspree (works on a pure static host — no backend, no secret):
+//   1. Create a free form at https://formspree.io aimed at support@oshigroup.co.uk
+//   2. Paste its endpoint below, e.g. 'https://formspree.io/f/abcdwxyz'
+// While FORMSPREE_ENDPOINT is empty, the form falls back to opening the visitor's
+// mail client (mailto:). Once set, submissions are sent automatically (AJAX).
+const FORMSPREE_ENDPOINT = ''; // e.g. 'https://formspree.io/f/abcdwxyz'
 
 export default function Support() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const subject = `Lazlo free trial — ${form.company || form.name || form.email}`;
-    const body = [
-      `Name: ${form.name}`,
-      `Company: ${form.company}`,
-      `Email: ${form.email}`,
-      '',
-      'Where do you sell?',
-      form.message,
-    ].join('\n');
+    setError('');
     if (FORMSPREE_ENDPOINT) {
-      fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(form),
-      }).catch(() => {});
+      setSending(true);
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ ...form, _subject: `Lazlo free trial — ${form.company || form.name || form.email}` }),
+        });
+        if (res.ok) setSent(true);
+        else setError('Something went wrong — please email support@oshigroup.co.uk directly.');
+      } catch {
+        setError('Couldn’t send just now — please email support@oshigroup.co.uk directly.');
+      } finally {
+        setSending(false);
+      }
     } else {
-      // Open the user's mail client with the trial request pre-filled.
+      // No hosted endpoint yet → open the visitor's mail client, pre-filled.
+      const subject = `Lazlo free trial — ${form.company || form.name || form.email}`;
+      const body = [
+        `Name: ${form.name}`, `Company: ${form.company}`, `Email: ${form.email}`,
+        '', 'Where do you sell?', form.message,
+      ].join('\n');
       window.location.href =
         `mailto:support@oshigroup.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setSent(true);
     }
-    setSent(true);
   };
 
   const field = {
@@ -66,13 +77,6 @@ export default function Support() {
               <span>
                 <span className="mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'var(--slate)', display: 'block' }}>EMAIL SUPPORT</span>
                 <span style={{ fontFamily: 'Geist,sans-serif', fontWeight: 600, fontSize: 15.5, color: 'var(--ink)' }}>support@oshigroup.co.uk</span>
-              </span>
-            </a>
-            <a href="tel:+447714236456" className="contact-line" style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
-              <span style={{ width: 42, height: 42, borderRadius: 11, background: 'var(--paper)', border: '1px solid var(--rule)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Icons.phone size={20} /></span>
-              <span>
-                <span className="mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'var(--slate)', display: 'block' }}>PHONE</span>
-                <span style={{ fontFamily: 'Geist,sans-serif', fontWeight: 600, fontSize: 15.5, color: 'var(--ink)' }}>+44 7714 236456</span>
               </span>
             </a>
           </div>
@@ -114,7 +118,8 @@ export default function Support() {
                 <textarea id="f-msg" rows="3" style={{ ...field, resize: 'vertical', minHeight: 84 }} value={form.message} onChange={set('message')} placeholder="e.g. Shopify + Amazon FBA, ~400 SKUs, two warehouses"></textarea>
               </div>
 
-              <button type="submit" className="btn btn-elec btn-block btn-lg">Start your 1-month free trial</button>
+              <button type="submit" className="btn btn-elec btn-block btn-lg" disabled={sending} style={sending ? { opacity: 0.7, cursor: 'wait' } : undefined}>{sending ? 'Sending…' : 'Start your 1-month free trial'}</button>
+              {error && <p style={{ color: 'var(--danger)', fontSize: 13, lineHeight: 1.5, textAlign: 'center', margin: '12px 0 0' }}>{error}</p>}
               <p className="mono" style={{ fontSize: 10.5, letterSpacing: '0.06em', color: 'var(--slate)', textAlign: 'center', margin: '12px 0 0', lineHeight: 1.6 }}>
                 NO CARD REQUIRED · NO PAYMENT · NO ACCOUNT TO SET UP<br />
                 By submitting you agree to our <Link href="/privacy" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>Privacy Policy</Link>.

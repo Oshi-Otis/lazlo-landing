@@ -113,7 +113,7 @@ export default function PrivacyPage() {
             <h3>12. Contact</h3>
             <p>
               Oshi Group Ltd, Nightingale House, 46–48 East Street, Epsom, Surrey KT17 1HQ, United
-              Kingdom · <a href="mailto:support@oshigroup.co.uk">support@oshigroup.co.uk</a> · +44 7714 236456
+              Kingdom · <a href="mailto:support@oshigroup.co.uk">support@oshigroup.co.uk</a>
             </p>
           </div>
         </section>

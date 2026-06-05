@@ -7,7 +7,7 @@ import { Eyebrow } from '../../components/brand';
 export const metadata = {
   title: 'Support & Contact',
   description:
-    'Contact Lazlo support — email support@oshigroup.co.uk or call +44 7714 236456. ' +
+    'Contact Lazlo support — email support@oshigroup.co.uk. ' +
     'Start your one-month free trial, no card required.',
 };
 
