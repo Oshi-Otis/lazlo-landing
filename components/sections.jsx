@@ -5,6 +5,7 @@
 // =====================================================================
 
 import { P, LogoCartouche, Eyebrow, ChannelTile, Icons, Pill } from './brand';
+import { SIGNUP_URL } from '../lib/links';
 
 // ── Hero ──────────────────────────────────────────────────────────────
 export function Hero() {
@@ -30,7 +31,7 @@ export function Hero() {
 
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 14 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-              <a className="btn btn-elec btn-lg" href="#support">Start your 1-month free trial <Icons.arrow size={16} stroke={P.navy} /></a>
+              <a className="btn btn-elec btn-lg" href={SIGNUP_URL}>Start your 1-month free trial <Icons.arrow size={16} stroke={P.navy} /></a>
               <span className="mono" style={{ fontSize: 11, letterSpacing: '0.08em', color: 'var(--slate)', paddingLeft: 2 }}>NO CARD REQUIRED</span>
             </div>
             <a className="btn btn-ghost btn-lg" href="#features" style={{ alignSelf: 'flex-start' }}>See features</a>

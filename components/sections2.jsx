@@ -4,6 +4,7 @@
 // =====================================================================
 
 import { P, Lockup, Eyebrow, Icons, Pill } from './brand';
+import { SIGNUP_URL } from '../lib/links';
 
 // NOTE (pricing — TBC): prices below are carried verbatim from the Claude Design
 // mockup. Per the L165 brief they are placeholders to be confirmed before publish.
@@ -90,7 +91,7 @@ function PriceCard({ tier }) {
       </ul>
 
       <div style={{ marginTop: 26, display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <a className={pop ? 'btn btn-elec btn-block btn-lg' : 'btn btn-primary btn-block btn-lg'} href="#support">Start your 1-month free trial</a>
+        <a className={pop ? 'btn btn-elec btn-block btn-lg' : 'btn btn-primary btn-block btn-lg'} href={SIGNUP_URL}>Start your 1-month free trial</a>
         <span className="mono" style={{ fontSize: 10.5, letterSpacing: '0.08em', textAlign: 'center',
           color: pop ? 'var(--bone-55)' : 'var(--slate)' }}>NO CARD REQUIRED</span>
       </div>

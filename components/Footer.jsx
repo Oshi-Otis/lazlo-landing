@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { P, Lockup } from './brand';
+import { SIGNUP_URL } from '../lib/links';
 
 // Shared footer. Internal routes via next/link (basePath-safe); section jumps as
 // "/#…" so they work from every page. Legal block carries the verbatim Oshi Group
@@ -16,15 +17,21 @@ export default function Footer() {
               e-commerce and marketplace sellers.
             </p>
             <div style={{ marginTop: 20 }}>
-              <Link className="btn btn-elec" href="/support">Start your 1-month free trial</Link>
+              <a className="btn btn-elec" href={SIGNUP_URL}>Start your 1-month free trial</a>
             </div>
           </div>
 
           <div>
             <div className="eyebrow-light" style={{ marginBottom: 16 }}>Product</div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {[['Features', '/#features'], ['Pricing', '/#pricing'], ['Support', '/support'], ['Start free trial', '/support']].map(([l, h]) => (
-                <li key={l}><Link href={h} className="foot-link" style={{ fontSize: 14.5, color: 'var(--bone-70)' }}>{l}</Link></li>
+              {[['Features', '/#features'], ['Pricing', '/#pricing'], ['Support', '/support'], ['Start free trial', SIGNUP_URL]].map(([l, h]) => (
+                <li key={l}>
+                  {h.startsWith('http') ? (
+                    <a href={h} className="foot-link" style={{ fontSize: 14.5, color: 'var(--bone-70)' }}>{l}</a>
+                  ) : (
+                    <Link href={h} className="foot-link" style={{ fontSize: 14.5, color: 'var(--bone-70)' }}>{l}</Link>
+                  )}
+                </li>
               ))}
             </ul>
           </div>
