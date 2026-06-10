@@ -43,6 +43,7 @@ export default function Footer() {
               <li><a href="mailto:api@oshigroup.co.uk" className="foot-link" style={{ fontSize: 14.5, color: 'var(--bone-70)' }}>Partner / API enquiries</a></li>
               <li><Link href="/privacy" className="foot-link" style={{ fontSize: 14.5, color: 'var(--bone-70)' }}>Privacy Policy</Link></li>
               <li><Link href="/terms" className="foot-link" style={{ fontSize: 14.5, color: 'var(--bone-70)' }}>Terms of Service</Link></li>
+              <li><Link href="/data-deletion" className="foot-link" style={{ fontSize: 14.5, color: 'var(--bone-70)' }}>Data Deletion</Link></li>
             </ul>
           </div>
         </div>
@@ -65,7 +66,8 @@ export default function Footer() {
           <div className="mono" style={{ fontSize: 12, lineHeight: 1.85, color: 'var(--bone-55)' }}>
             <div style={{ color: 'var(--bone-70)' }}>Legal</div>
             <Link href="/privacy" className="foot-link" style={{ color: 'var(--bone-55)' }}>Privacy Policy</Link><br />
-            <Link href="/terms" className="foot-link" style={{ color: 'var(--bone-55)' }}>Terms of Service</Link>
+            <Link href="/terms" className="foot-link" style={{ color: 'var(--bone-55)' }}>Terms of Service</Link><br />
+            <Link href="/data-deletion" className="foot-link" style={{ color: 'var(--bone-55)' }}>Data Deletion</Link>
           </div>
         </div>
 

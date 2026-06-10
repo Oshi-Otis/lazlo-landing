@@ -7,9 +7,9 @@ export const metadata = {
   description: 'The terms governing use of the Lazlo platform provided by Oshi Group Ltd.',
 };
 
-// ⚠️ LEGAL REVIEW RECOMMENDED — this is a standard UK SaaS terms template drafted
-// for completeness and compliance review. Have it reviewed by a qualified solicitor
-// before relying on it, and confirm pricing/billing terms once prices are final.
+// ⚠️ DRAFT — LEGAL REVIEW RECOMMENDED. This is a standard UK SaaS terms template
+// drafted for completeness. Have it reviewed by a qualified solicitor before relying
+// on it, and confirm pricing/billing terms once prices are final.
 export default function TermsPage() {
   return (
     <>
@@ -19,7 +19,7 @@ export default function TermsPage() {
           <div className="wrap prose">
             <Eyebrow elec>Legal</Eyebrow>
             <h2 style={{ margin: '14px 0 6px' }}>Terms of Service</h2>
-            <p className="mono" style={{ fontSize: 12, color: 'var(--slate)', margin: '0 0 28px' }}>Last updated: 5 June 2026</p>
+            <p className="mono" style={{ fontSize: 12, color: 'var(--slate)', margin: '0 0 28px' }}>Last updated: 10 June 2026</p>
 
             <p className="lead">
               These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of
@@ -52,10 +52,18 @@ export default function TermsPage() {
 
             <h3>4. Fees, billing &amp; VAT</h3>
             <p>
-              Paid plans are billed monthly in advance in GBP. Prices are shown inclusive of UK VAT
-              where applicable. Unless required by law, fees are non-refundable. We may change prices
-              on reasonable notice; changes take effect at your next billing cycle. You may cancel at
-              any time, effective at the end of the current billing period.
+              Lazlo is priced as a one-off onboarding fee of <strong>£500</strong> to set up and
+              configure your account and connections, plus a <strong>modular monthly subscription</strong>:
+              you pay only for the modules you enable, and your monthly fee adjusts as you add or remove
+              them. Subscription fees are billed monthly in advance in GBP. Prices are exclusive of UK
+              VAT, which is added where applicable.
+            </p>
+            <p>
+              There is <strong>no minimum term</strong>. You may cancel at any time on{' '}
+              <strong>30 days&apos; notice</strong>, effective at the end of the then-current billing
+              period; we will not bill you for periods after the notice takes effect. Unless required
+              by law, fees already paid are non-refundable. We may change prices on reasonable notice;
+              changes take effect at your next billing cycle.
             </p>
 
             <h3>5. Acceptable use</h3>
